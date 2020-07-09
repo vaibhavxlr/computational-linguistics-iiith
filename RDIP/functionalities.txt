@@ -1,0 +1,5 @@
+reset button
+get correct sentence
+check correctness
+random_both language sentence
+
