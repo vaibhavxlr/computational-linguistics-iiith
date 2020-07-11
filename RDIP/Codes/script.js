@@ -74,7 +74,7 @@ var hin = [
             'श्याम सोया और राम भी',
             'सोया श्याम और राम भी',
             'सोया राम और श्याम भी'
-        ]
+        ],
 
         ['राम खाकर सोया',
             'खाकर राम सोया',
@@ -82,7 +82,7 @@ var hin = [
             'खाकर सोया राम',
             'सोया राम खाकर',
             'सोया खाकर राम'
-        ]
+        ],
         
         [
             'बिल्लियों को मारकर कुत्ता सो गया',
@@ -94,7 +94,7 @@ var hin = [
             'सो गया कुत्ता बिल्लियों को मारकर',
             'सो गया कुत्ता मारकर बिल्लियों को'
 
-        ]
+        ],
 
         [
             'एक लाल किताब वहाँ है',
@@ -102,7 +102,7 @@ var hin = [
             'वहाँ है एक लाल किताब',
            ' है वहाँ एक लाल किताब'
 
-        ]
+        ],
 
 
         [
@@ -120,15 +120,45 @@ var hin = [
 ]
 
 //document.write(Eng[0][0])
-    
 
-function getOption() {
+function randomize_forbuttons(ans) {
+
+    var final_ans = [];
+    for(i = 0; i < ans.length; i++) {
+        var index = Math.floor(Math.random() * ans.length);
+        final_ans[i] = ans[index];
+    }
+   // document.write(final_ans)
+    return final_ans;
+}
+
+function forEng() {
+
+    var numl = Math.floor(Math.random() * 10);
+    var sen = Eng[numl][0];
+    var ans = sen.split(" ");
+    //document.write(ans);
+   randomize_forbuttons(ans);
+}
+
+function forhin() {
+
+    var numl = Math.floor(Math.random() * 7);
+    var sen = hin[numl][0];
+    var ans = sen.split(" ");
+    //document.write(ans);
+   randomize_forbuttons(ans);
+}
+
+
+function getOption(a) {
    document.getElementById('bol').innerHTML = 'Form a  sentence (Declarative or Interrogative or any other type) from the given words'
    document.getElementById('ital').innerHTML = '(select the buttons in proper order)'
-    // if(a == 'English') {
-
-    // }
-    // else if(a == 'Hindi') {
-
-    // }
+    
+   if(a == 'english') {
+        forEng();
+    }
+    else if(a == 'hindi') {
+        forhin();
+    }
 }
