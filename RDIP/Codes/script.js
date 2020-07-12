@@ -120,45 +120,119 @@ var hin = [
 ]
 
 //document.write(Eng[0][0])
+var res = "";
+//var backup;
 
-function randomize_forbuttons(ans) {
+// function restart() {
+//     le
+//     for (x of final_ans) {
 
-    var final_ans = [];
-    for(i = 0; i < ans.length; i++) {
-        var index = Math.floor(Math.random() * ans.length);
-        final_ans[i] = ans[index];
-    }
-   // document.write(final_ans)
-    return final_ans;
+//         buttonList += `<button id = ${x}  value = ${x} onclick = "printelem(this.value);">${x}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`
+//     }
+//     //console.log(typeof(res[0]))
+//     // for (x in res) {
+//     //     if(x != ' ')
+//     //      document.getElementById(x).style.visibility = 'visible';
+//     // }
+// }
+//let backup;
+
+
+
+function printelem(val) {
+    //console.log(typeof(val))
+    document.getElementById(val).style.visibility = 'hidden';
+    res += val + " " 
+    let para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons(ans);">Re-form the sentence</button>`
+    document.getElementById('final').innerHTML = para;
+
 }
 
-function forEng() {
 
+function randomize_forbuttons(ans) {
+    // let ans = backup;
+    
+    document.getElementById('final').innerHTML = "";
+    document.getElementById('but').innerHTML = "";
+    res = "";
+    let temp = ans;
+    let final_ans = [];
+    //console.log('reach')
+    let len = temp.length;
+    let count = 1;
+    for(i = 0; i < len; i++) {
+        var index = Math.floor(Math.random() * (len - count));
+       // console.log(ans[index])
+        final_ans.push(temp[index]);
+        
+        temp.splice(index, 1);
+        count++;
+    }
+    //console.log(ans) 
+    //console.log(temp)
+    //console.log(final_ans)
+         
+    
+    
+    let buttonList = "";
+
+    for (x of final_ans) {
+
+        buttonList += `<button style = "padding-bottom:20px" id = ${x}  value = ${x} onclick = "printelem(this.value);">${x}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`
+    
+    }
+    
+    document.getElementById('but').innerHTML = buttonList;
+
+}
+
+
+var ans;
+function forEng() {
+    
     var numl = Math.floor(Math.random() * 10);
     var sen = Eng[numl][0];
-    var ans = sen.split(" ");
-    //document.write(ans);
-   randomize_forbuttons(ans);
+    ans = sen.split(" ");
+    //backup = ans;
+   // document.write(ans);
+    randomize_forbuttons(ans);
 }
 
 function forhin() {
 
     var numl = Math.floor(Math.random() * 7);
     var sen = hin[numl][0];
-    var ans = sen.split(" ");
+    ans = sen.split(" ");
+    //backup = ans;
     //document.write(ans);
-   randomize_forbuttons(ans);
+    randomize_forbuttons(ans);
+
 }
 
 
 function getOption(a) {
+
    document.getElementById('bol').innerHTML = 'Form a  sentence (Declarative or Interrogative or any other type) from the given words'
    document.getElementById('ital').innerHTML = '(select the buttons in proper order)'
+   
+   
+   if(a === 'english' || a === 'hindi') {
+
+    var x = document.getElementById('but'); 
+    x.style.visibility = 'visible';
     
-   if(a == 'english') {
+
+   }
+
+   if(a === 'english') {
+
         forEng();
+    
     }
-    else if(a == 'hindi') {
+    else if(a === 'hindi') {
+        
         forhin();
+    
     }
+
 }
