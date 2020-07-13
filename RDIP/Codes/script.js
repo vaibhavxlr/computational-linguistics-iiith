@@ -36,22 +36,22 @@ var Eng = [
     'she ate an apple so did John'
     ],
 
-['the teacher returned the book after she noticed the error',
-    'the teacher noticed the error after she returned the book',
-    'after the teacher returned the book she noticed the error',
-    'after the teacher noticed the error she returned the book',
-    'she returned the book after the teacher noticed the error',
-    'she noticed the error after the teacher returned the book',
-    'after she returned the book the teacher noticed the error',
-    'after she noticed the error the teacher returned the book'
+['The teacher returned `the book after she noticed the error',
+    'The teacher noticed `the error after she returned the book',
+    'after The teacher returned `the book she noticed the error',
+    'after The teacher noticed `the error she returned the book',
+    'she returned The book after `the teacher noticed the error',
+    'she noticed The error after `the teacher returned the book',
+    'after she returned The book `the teacher noticed the error',
+    'after she noticed The error `the teacher returned the book'
     ],
 
-['I told her that I bought a book yesterday',
-    'I told her yesterday that I bought a book',
-    'yesterday I told her that I bought a book',
-    'I bought a book that I told her yesterday',
-    'I bought a book yesterday that I told her',
-    'yesterday I bought a book that I told her'
+['I told her that i bought a book yesterday',
+    'I told her yesterday that i bought a book',
+    'yesterday I told her that i bought a book',
+    'I bought a book that i told her yesterday',
+    'I bought a book yesterday that i told her',
+    'yesterday I bought a book that i told her'
     ]
 
 ];
@@ -145,7 +145,19 @@ function printelem(val) {
     //console.log(typeof(val))
     document.getElementById(val).style.visibility = 'hidden';
     res += val + " " 
-    let para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = " randomize_forbuttons();">Re-form the sentence</button>`
+    let res_holder = res.split(" ");
+    let para;
+
+    console.log(res_holder.length)
+    console.log(ithave.length)
+
+    if(res_holder.length - 1 == ithave.length) {
+        para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons();">Re-form the sentence</button><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = " check_if_correct()">Check the correctness of this sentence</button>`
+    }
+    else {
+        para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons();">Re-form the sentence</button>`
+    }
+    
     document.getElementById('final').innerHTML = para;
 
 }
