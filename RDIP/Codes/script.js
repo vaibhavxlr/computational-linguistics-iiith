@@ -120,7 +120,7 @@ var hin = [
 ]
 
 //document.write(Eng[0][0])
-var res = "";
+
 //var backup;
 
 // function restart() {
@@ -136,26 +136,35 @@ var res = "";
 //     // }
 // }
 //let backup;
+//ans = "";
 
-
+window.res = "";
+var ithave = [];
 
 function printelem(val) {
     //console.log(typeof(val))
     document.getElementById(val).style.visibility = 'hidden';
     res += val + " " 
-    let para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons(ans);">Re-form the sentence</button>`
+    let para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = " randomize_forbuttons();">Re-form the sentence</button>`
     document.getElementById('final').innerHTML = para;
 
 }
 
 
-function randomize_forbuttons(ans) {
+
+
+function randomize_forbuttons() {
     // let ans = backup;
     
-    document.getElementById('final').innerHTML = "";
     document.getElementById('but').innerHTML = "";
-    res = "";
-    let temp = ans;
+    document.getElementById('final').innerHTML = "";
+    
+
+     res = "";
+    let temp = [...ithave];
+    
+    // console.log(ans);
+     //console.log(temp);
     let final_ans = [];
     //console.log('reach')
     let len = temp.length;
@@ -168,44 +177,47 @@ function randomize_forbuttons(ans) {
         temp.splice(index, 1);
         count++;
     }
-    //console.log(ans) 
-    //console.log(temp)
-    //console.log(final_ans)
-         
-    
-    
     let buttonList = "";
 
     for (x of final_ans) {
-
+    
         buttonList += `<button style = "padding-bottom:20px" id = ${x}  value = ${x} onclick = "printelem(this.value);">${x}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`
     
     }
     
     document.getElementById('but').innerHTML = buttonList;
+    
 
 }
 
 
-var ans;
+
+
 function forEng() {
     
     var numl = Math.floor(Math.random() * 10);
     var sen = Eng[numl][0];
-    ans = sen.split(" ");
+    let temp = sen.split(" ");
+    ithave = [...temp];
+    //window.ithave = temp;
     //backup = ans;
    // document.write(ans);
-    randomize_forbuttons(ans);
+    randomize_forbuttons();
+
+    
 }
+
 
 function forhin() {
 
     var numl = Math.floor(Math.random() * 7);
     var sen = hin[numl][0];
-    ans = sen.split(" ");
+    let temp = sen.split(" ");
+    ithave = [...temp];
     //backup = ans;
     //document.write(ans);
-    randomize_forbuttons(ans);
+    randomize_forbuttons();
+    
 
 }
 
