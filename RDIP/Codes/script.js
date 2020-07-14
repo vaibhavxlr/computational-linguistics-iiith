@@ -152,7 +152,7 @@ function printelem(val) {
     console.log(ithave.length)
 
     if(res_holder.length - 1 == ithave.length) {
-        para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons();">Re-form the sentence</button><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = " check_if_correct()">Check the correctness of this sentence</button>`
+        para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons();">Re-form the sentence</button><br><br><button style = "padding-bottom:20px; margin-left:15%" onclick = " check_if_correct()">Check the correctness of this sentence</button>`
     }
     else {
         para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons();">Re-form the sentence</button>`
