@@ -140,6 +140,7 @@ var hin = [
 
 window.res = "";
 var ithave = [];
+var final_str = "";
 
 function printelem(val) {
     //console.log(typeof(val))
@@ -147,22 +148,72 @@ function printelem(val) {
     res += val + " " 
     let res_holder = res.split(" ");
     let para;
-
-    console.log(res_holder.length)
-    console.log(ithave.length)
+    
+    // console.log(res_holder.length)
+    // console.log(ithave.length)
 
     if(res_holder.length - 1 == ithave.length) {
-        para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons();">Re-form the sentence</button><br><br><button style = "padding-bottom:20px; margin-left:15%" onclick = " check_if_correct()">Check the correctness of this sentence</button>`
+        para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1> <button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons();">Re-form the sentence</button><br><br><button style = "padding-bottom:20px; margin-left:15%" onclick = " check_if_correct()">Check the correctness of this sentence</button>`
     }
     else {
-        para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><br><br><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons();">Re-form the sentence</button>`
+        para = `<b style = "color:blue">Formed Sentence </b><i>(after selecting words):</i><br><h1>${res}</h1><button style = "padding-bottom:20px; margin-left:20%" onclick = "randomize_forbuttons();">Re-form the sentence</button> `
+        // final_str = Arrays.toString(res_holder);
+        // console.log(final_holder);
+        //console_log(res_holder);
+        //final_str = res;
     }
-    
+
     document.getElementById('final').innerHTML = para;
 
 }
 
 
+function check_if_correct() {
+    
+    //console.log(res)
+    //let ans1 = "";
+    let flag1 = 0, flag2 = 0;
+    let ans1 = `<h3 style = "color:red;margin-left:18%; margin-top:-5%;">Wrong Answer!!!</h3><button style = "padding-bottom:20px; margin-top:-5%; margin-left:20%" onclick = "givecorrect();">Get Correct Sentence</button>`
+        for(i = 0; i < Eng.length; i++) {
+            for(j = 0; j < Eng[i].length; j++) {
+                
+                //console.log(res === Eng[i][j])
+              
+                if(res === Eng[i][j] + " ") {
+                    ans1 = `<h3 style = "margin-left:18%; margin-top:-5%; color:green;">Right Answer!!!</h3>`;
+                   // document.getElementById('ans').innerHTML = ans1;
+                    flag1 = 1;    
+                    break;
+                    //document.getElementById('ans').innerHTML = ans;
+                }
+                if(flag1)
+                break;
+            }
+         }
+            if(!flag1)
+               { for(i = 0; i < hin.length; i++) {
+                    for(j = 0; j < hin[i].length; j++) {
+                        
+                        //console.log(res === Eng[i][j])
+                    
+                        if(res === hin[i][j] + " ") {
+                            ans1 = `<h3 style = "margin-left:18%; margin-top:-5%; color:green;">Right Answer!!!</h3>`;
+                        // document.getElementById('ans').innerHTML = ans1;
+                            flag2 = 1;    
+                            break;
+                            //document.getElementById('ans').innerHTML = ans;
+                        }
+                    
+                    }
+                if(flag2)
+                    break;
+               }
+            }
+            
+        document.getElementById('ans').innerHTML = ans1;
+        
+
+}
 
 
 function randomize_forbuttons() {
@@ -170,7 +221,7 @@ function randomize_forbuttons() {
     
     document.getElementById('but').innerHTML = "";
     document.getElementById('final').innerHTML = "";
-    
+    document.getElementById('ans').innerHTML = "";
 
      res = "";
     let temp = [...ithave];
@@ -226,7 +277,7 @@ function forhin() {
     var sen = hin[numl][0];
     let temp = sen.split(" ");
     ithave = [...temp];
-    //backup = ans;
+    //backup = ans;\=
     //document.write(ans);
     randomize_forbuttons();
     
