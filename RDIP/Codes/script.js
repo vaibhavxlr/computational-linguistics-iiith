@@ -167,37 +167,37 @@ function printelem(val) {
 
 }
 
-function givecorrect() {
+// function givecorrect() {
     
    
-    let hehe = "";
-    for(i = 0; i < Eng.length; i++) {
+//     let hehe = "";
+//     for(i = 0; i < Eng.length; i++) {
         
-        if(res.localeCompare(Eng[i][0] + " ") == 0) {
-            console.log(Eng[i][0])
-        console.log(res)
-            for(j = 0; j < Eng[i].length; j++) {
-                hehe += `<p>${Eng[i][j]}</p><br>`
-            }
+//         if(res.localeCompare(Eng[i][0] + " ") == 0) {
+//             console.log(Eng[i][0])
+//         console.log(res)
+//             for(j = 0; j < Eng[i].length; j++) {
+//                 hehe += `<p>${Eng[i][j]}</p><br>`
+//             }
             
         
-        //return;
-        }
-    }
+//         //return;
+//         }
+//     }
 
-    for(i = 0; i < hin.length; i++) {
-        if(res.localeCompare(hin[i][0] ) == 0) {
-            console.log(Eng[i][0])
-        console.log(res)
-            for(j = 0; j < hin[i].length; j++) {
-                hehe += `<p>${hin[i][j]}</p><br>`
-            }
-        }
+//     for(i = 0; i < hin.length; i++) {
+//         if(res.localeCompare(hin[i][0] ) == 0) {
+//             console.log(Eng[i][0])
+//         console.log(res)
+//             for(j = 0; j < hin[i].length; j++) {
+//                 hehe += `<p>${hin[i][j]}</p><br>`
+//             }
+//         }
     
   
-    }
-document.getElementById('ans2').innerHTML = hehe;  
-}
+//     }
+// document.getElementById('ans2').innerHTML = hehe;  
+// }
 
 function check_if_correct() {
     
